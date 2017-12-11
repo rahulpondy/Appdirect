@@ -1,4 +1,4 @@
-package com.appdirect.skillassesment.controllers;
+package com.appdirect.skillassesment.web;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

@@ -11,6 +11,10 @@
   <properties>
     <spring.boot.version>1.5.9.RELEASE</spring.boot.version>
     <spring.core.version>4.3.13.RELEASE</spring.core.version>
+    <oauth.signature.version>1.19.4</oauth.signature.version>
+    <openid4java.version>1.0.0</openid4java.version>
+    <apache.common.langs3.version>3.0</apache.common.langs3.version>
+    <httpclient.version>4.5.4</httpclient.version>
   </properties>
 
   <parent>
@@ -22,41 +26,59 @@
   <dependencies>
 
     <dependency>
-      <groupId>com.google.oauth-client</groupId>
-      <artifactId>google-oauth-client</artifactId>
-      <version>1.23.0</version>
-    </dependency>
-
-    <dependency>
       <groupId>com.sun.jersey.contribs.jersey-oauth</groupId>
       <artifactId>oauth-signature</artifactId>
-      <version>1.19.4</version>
+      <version>${oauth.signature.version}</version>
     </dependency>
-
-
 
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>${spring.core.version}</version>
+      <version>${spring.core.version}</version><!--$NO-MVN-MAN-VER$-->
     </dependency>
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-      <version>${spring.boot.version}</version>
+      <version>${spring.boot.version}</version><!--$NO-MVN-MAN-VER$-->
     </dependency>
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-devtools</artifactId>
-      <version>${spring.boot.version}</version>
-    </dependency>
+      </dependency>
+    
+    <!-- <dependency>
+    	<groupId>org.openid4java</groupId>
+    	<artifactId>openid4java</artifactId>
+    	<version>${openid4java.version}}</version>
+	</dependency> -->
+	
+	<dependency>
+    	<groupId>org.apache.commons</groupId>
+    	<artifactId>commons-lang3</artifactId>
+    	<version>${apache.common.langs3.version}</version>	
+	</dependency>
+
+	<dependency>
+    	<groupId>oauth.signpost</groupId>
+    	<artifactId>signpost-core</artifactId>
+    	<version>1.2.1.2</version>
+    	<!-- <type>pom</type> -->
+	</dependency>
+
+	
+	<dependency>
+    	<groupId>org.apache.httpcomponents</groupId>
+    	<artifactId>httpclient</artifactId>
+    	</dependency>
+	
+	
+    
 
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -71,7 +93,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.7.0</version>
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
