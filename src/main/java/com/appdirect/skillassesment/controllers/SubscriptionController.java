@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.auth.AuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -48,12 +49,14 @@ public class SubscriptionController {
 			String signatureMethod = map.containsKey(OAuthUtil.OAUTH_SIGNATURE_METHOD) ? map.get(OAuthUtil.OAUTH_SIGNATURE_METHOD) : null;
 			Set<String> params = new HashSet<String>(){{add("url");}};
 			List<String> values = new ArrayList<String>(){{add(urlDecoder);}};
-			oAuthUtil.verifyRequest(HTTPMethod.GET, new URL(requestUrl + "/create"), params , values, timestamp, nonce, signature, signatureMethod);
+			//oAuthUtil.verifyRequest(HTTPMethod.GET, new URL(requestUrl + "/create"), params , values, timestamp, nonce, signature, signatureMethod);
 			AppHttpClient<CreateSubscriptionDTO> appHttpClient = new AppHttpClient<>(CreateSubscriptionDTO.class);
-			CreateSubscriptionDTO createSubscriptionDTO = appHttpClient.getEventDetail(urlDecoder);
-			String accountIdentifier = createSubscriptionDTO.getPayloadDTO().getCompanyDTO().getUuid();
+			if(StringUtils.isNotBlank(urlDecoder)){
+				CreateSubscriptionDTO createSubscriptionDTO = appHttpClient.getEventDetail(urlDecoder);
+				String accountIdentifier = createSubscriptionDTO.getPayloadDTO().getCompanyDTO().getUuid();
+			}
 			response.setSuccess(true);
-			response.setAccountIdentifier(accountIdentifier);
+			response.setAccountIdentifier("new-account-identifier");
 			return response;
 		} 
 		catch(AuthenticationException authenticationException){

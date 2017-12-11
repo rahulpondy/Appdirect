@@ -33,8 +33,8 @@ public class OAuthUtil {
 	public static final String OAUTH_CONSUMER_KEY = "oauth_consumer_key";
 	public static final String OAUTH_SIGNATURE_METHOD = "oauth_signature_method";
 	public static final String OAUTH_TIMESTAMP = "oauth_timestamp";
-	public static final String CONSUMER_KEY = "test3-186762";
-	public static final String CONSUMER_SECRET = "x4RlGKQv5pKQj65t";
+	public static final String CONSUMER_KEY = "test4-186870";
+	public static final String CONSUMER_SECRET = "Fns4fN4EXpSsccG4";
 	
 	public boolean verifyRequest(HTTPMethod httpMethod, URL url, Set<String> paramterNames, 
 			List<String> paramterValues, String timestamp, String nonce, String signature, String signatureMethod) 
